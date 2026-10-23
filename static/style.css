@@ -169,7 +169,7 @@ input {
     z-index: 0;
     border: 1px solid rgba(215, 197, 155, 0.12);
     border-radius: 50%;
-    pointer-events: none;
+    pointer-events: none;  
 }
 
 .ambient-orb-one {
