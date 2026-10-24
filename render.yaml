@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: hotel-chatbot
+    name: guled-restaurant
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
