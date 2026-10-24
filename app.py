@@ -149,6 +149,51 @@ def place_order():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route("/api/reviews/<menu_item_id>")
+def get_reviews(menu_item_id):
+    try:
+        response = supabase.table("reviews").select("*").eq("menu_item_id", menu_item_id).order("created_at", desc=True).execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/reviews", methods=["POST"])
+def add_review():
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify({"error": "Invalid request."}), 400
+
+    menu_item_id = (data.get("menu_item_id") or "").strip()
+    author_name = (data.get("author_name") or "").strip()
+    rating = data.get("rating")
+    comment = (data.get("comment") or "").strip()
+
+    if not menu_item_id or not author_name:
+        return jsonify({"error": "Menu item and your name are required."}), 400
+
+    try:
+        rating = int(rating)
+    except (TypeError, ValueError):
+        return jsonify({"error": "Rating must be a number from 1 to 5."}), 400
+
+    if rating < 1 or rating > 5:
+        return jsonify({"error": "Rating must be between 1 and 5 stars."}), 400
+
+    try:
+        response = supabase.table("reviews").insert({
+            "menu_item_id": menu_item_id,
+            "author_name": author_name[:80],
+            "rating": rating,
+            "comment": comment[:500],
+        }).execute()
+
+        review = response.data[0] if response.data else None
+        return jsonify({"review": review}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/order/<order_id>")
 def get_order(order_id):
     try:

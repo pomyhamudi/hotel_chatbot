@@ -219,6 +219,49 @@
         </div>
     </div>
 
+    <!-- Reviews Modal -->
+    <div class="modal-overlay" id="reviews-modal">
+        <div class="modal modal-reviews">
+            <button class="modal-close" id="reviews-close" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+            <div class="reviews-modal-header">
+                <img id="reviews-item-img" src="" alt="">
+                <div>
+                    <p class="section-eyebrow">Reviews</p>
+                    <h2 class="modal-title" id="reviews-item-name">Dish name</h2>
+                    <div class="reviews-summary" id="reviews-summary"></div>
+                </div>
+            </div>
+            <div class="reviews-list" id="reviews-list"></div>
+            <div class="review-form-area">
+                <h3 class="review-form-title">Leave a review</h3>
+                <form id="review-form">
+                    <div class="form-row">
+                        <label for="review-name">Your name</label>
+                        <input type="text" id="review-name" required placeholder="e.g. John D." maxlength="80">
+                    </div>
+                    <div class="form-row">
+                        <label>Your rating</label>
+                        <div class="star-input" id="star-input">
+                            <button type="button" data-val="1" aria-label="1 star"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" fill="currentColor"/></svg></button>
+                            <button type="button" data-val="2" aria-label="2 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" fill="currentColor"/></svg></button>
+                            <button type="button" data-val="3" aria-label="3 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" fill="currentColor"/></svg></button>
+                            <button type="button" data-val="4" aria-label="4 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" fill="currentColor"/></svg></button>
+                            <button type="button" data-val="5" aria-label="5 stars"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 15l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" fill="currentColor"/></svg></button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="review-comment">Your comment <span class="opt">(optional)</span></label>
+                        <textarea id="review-comment" rows="3" placeholder="Tell others what you thought..." maxlength="500"></textarea>
+                    </div>
+                    <div class="modal-error" id="review-error"></div>
+                    <button type="submit" class="btn-primary btn-block" id="review-submit">Submit review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Order Confirmation Modal -->
     <div class="modal-overlay" id="confirm-modal">
         <div class="modal modal-confirm">
